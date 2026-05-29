@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=PlutoSDR Protocol Tool
+Comment=Учебный PlutoSDR-проект Никиты Гурачевского, ИА-232
+Exec=/usr/bin/plutosdr_tool
+Icon=plutosdr-protocol-tool
+Terminal=false
+Categories=HamRadio

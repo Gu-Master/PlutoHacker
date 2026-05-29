@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Interpretation</class>
+ <widget class="QWidget" name="Interpretation">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>820</width>
+    <height>561</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayoutRoot">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QSplitter" name="splitterMain">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="childrenCollapsible">
+      <bool>false</bool>
+     </property>
+     <property name="handleWidth">
+      <number>6</number>
+     </property>
+     <widget class="QFrame" name="frameSignalsSidebar">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>260</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>420</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame#frameSignalsSidebar {
+    background: rgba(18, 24, 38, 0.94);
+    border-right: 1px solid rgba(96, 165, 250, 0.20);
+}
+QPushButton#btnRecordSignal, QPushButton#btnOpenSignalFiles, QPushButton#btnChooseSignalFolder {
+    min-height: 42px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+}
+QPushButton#btnRecordSignal {
+    background: rgba(230, 168, 72, 0.18);
+    border: 1px solid rgba(230, 168, 72, 0.40);
+}
+QPushButton#btnOpenSignalFiles {
+    background: rgba(96, 165, 250, 0.16);
+    border: 1px solid rgba(96, 165, 250, 0.40);
+}
+QPushButton#btnChooseSignalFolder {
+    background: rgba(74, 222, 128, 0.14);
+    border: 1px solid rgba(74, 222, 128, 0.35);
+}
+QListWidget#listWidgetSignals {
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 12px;
+    padding: 6px;
+    outline: none;
+}
+QListWidget#listWidgetSignals::item {
+    min-height: 32px;
+    border-radius: 8px;
+    padding: 6px 8px;
+}
+QListWidget#listWidgetSignals::item:selected {
+    background: rgba(96, 165, 250, 0.22);
+}
+QFrame#frameSignalMeta {
+    background: rgba(30, 41, 59, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 12px;
+}
+QLabel#labelSignalMetaTitle {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(226, 232, 240, 0.94);
+}
+QLabel#labelSignalMetaValue {
+    font-size: 12px;
+    color: rgba(226, 232, 240, 0.72);
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayoutSidebar">
+       <property name="spacing">
+        <number>14</number>
+       </property>
+       <property name="leftMargin">
+        <number>18</number>
+       </property>
+       <property name="topMargin">
+        <number>18</number>
+       </property>
+       <property name="rightMargin">
+        <number>18</number>
+       </property>
+       <property name="bottomMargin">
+        <number>18</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="labelSignalsListTitle">
+         <property name="styleSheet">
+          <string notr="true">font-size: 20px; font-weight: 700;</string>
+         </property>
+         <property name="text">
+          <string>Сигналы</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelSignalsListHint">
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font-size: 13px; color: rgba(226, 232, 240, 0.78);</string>
+         </property>
+         <property name="text">
+          <string>Выбери файл из списка. Справа откроется его окно с обычными кнопками и просмотром.</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelSignalFolderPath">
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font-size: 12px; color: rgba(226, 232, 240, 0.62);</string>
+         </property>
+         <property name="text">
+          <string>Папка сигналов: не выбрана</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnChooseSignalFolder">
+         <property name="text">
+          <string>Выбрать папку с сигналами</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="listWidgetSignals"/>
+       </item>
+       <item>
+        <widget class="QFrame" name="frameSignalMeta">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayoutSignalMeta">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="leftMargin">
+           <number>12</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>12</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="labelSignalMetaTitle">
+            <property name="text">
+             <string>Сведения о записи</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelSignalMetaValue">
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>Файл пока не выбран. Открой запись или выбери её в списке.</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnOpenSignalFiles">
+         <property name="text">
+          <string>Выбрать файл сигнала</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnRecordSignal">
+         <property name="text">
+          <string>Записать сигнал</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="ScrollArea" name="scrollArea">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAsNeeded</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrlAreaSignals">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>546</width>
+         <height>561</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QSplitter" name="splitter">
+          <property name="styleSheet">
+           <string notr="true">QSplitter::handle:vertical {
+margin: 4px 0px;
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+stop:0 rgba(255, 255, 255, 0),
+stop:0.5 rgba(100, 100, 100, 100),
+stop:1 rgba(255, 255, 255, 0));
+    image: url(:/icons/icons/splitter_handle_horizontal.svg);
+}</string>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="handleWidth">
+           <number>6</number>
+          </property>
+          <widget class="QLabel" name="labelGettingStarted">
+        <property name="font">
+         <font>
+          <pointsize>22</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">padding: 36px;
+color: rgba(226, 232, 240, 0.9);</string>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Открой или запиши сигнал слева, чтобы начать работу.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#94a3b8;&quot;&gt;После выбора записи здесь появятся график, параметры и содержимое сигнала.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+           <property name="textInteractionFlags">
+            <set>Qt::NoTextInteraction</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="placeholderLabel">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ScrollArea</class>
+   <extends>QScrollArea</extends>
+   <header>urh.ui.ScrollArea.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="urh.qrc"/>
+ </resources>
+ <connections/>
+</ui>
