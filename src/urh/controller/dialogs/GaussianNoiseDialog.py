@@ -67,7 +67,7 @@ class GaussianNoiseDialog(SendRecvDialog):
             Qt.Orientation.Horizontal, self.noiseControlFrame
         )
         self.sliderNoiseAmplitude.setRange(0, 100)
-        self.sliderNoiseAmplitude.setValue(20)
+        self.sliderNoiseAmplitude.setValue(70)
         self.sliderNoiseAmplitude.setToolTip("Амплитуда передаваемого белого шума")
         slider_layout.addWidget(self.sliderNoiseAmplitude, 1)
         layout.addLayout(slider_layout)
@@ -75,7 +75,8 @@ class GaussianNoiseDialog(SendRecvDialog):
         self.labelNoiseHint = QLabel(
             "Вкладка передает непрерывный тестовый шумоподобный сигнал на выбранной "
             "частоте и может использоваться для калибровки водопада и оценки "
-            "динамического диапазона приемника.",
+            "динамического диапазона приемника. Для уверенного наблюдения в SDR++ "
+            "обычно нужен высокий уровень шума и совпадение частоты приема с TX.",
             self.noiseControlFrame,
         )
         self.labelNoiseHint.setWordWrap(True)

@@ -16,6 +16,11 @@ class ContinuousNoiseGenerator(object):
 
     WAIT_TIMEOUT = 0.02
     DEFAULT_CHUNK_SIZE = 16384
+    # PlutoSDR uses 12-bit IQ samples internally, so a timid noise distribution
+    # becomes barely visible on a remote waterfall after quantization and path loss.
+    # Using 2 sigma for full-scale mapping keeps the signal obviously noise-like
+    # while making the calibration mode much easier to see in SDR++.
+    SIGMA_FULL_SCALE_DIVISOR = 2.0
 
     def __init__(self, dtype, amplitude: float = 0.2, chunk_size: int = None):
         self.dtype = np.dtype(dtype)
@@ -88,7 +93,7 @@ class ContinuousNoiseGenerator(object):
             if amplitude <= 0:
                 noise = np.zeros((n_samples, 2), dtype=self.dtype)
             else:
-                sigma = amplitude * peak / 3.0
+                sigma = amplitude * peak / self.SIGMA_FULL_SCALE_DIVISOR
                 noise = rng.normal(0.0, sigma, size=(n_samples, 2))
                 np.clip(noise, min_val, max_val, out=noise)
                 noise = noise.astype(self.dtype, copy=False)
